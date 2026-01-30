@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RAMACHANDRAN HOSPITAL | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* --------------------
+       RESET & GLOBAL
+    -------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2933;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* --------------------
+       NAVBAR
+    -------------------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .navbar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #36cfc9, #1890ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 18px rgba(56, 189, 248, 0.4);
+    }
+
+    .logo-text-main {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #102a43;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-text-sub {
+      font-size: 0.75rem;
+      color: #627d98;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    nav li a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      color: #4b5563;
+      transition: color 0.3s ease;
+    }
+
+    nav li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #36cfc9, #1890ff);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    nav li a:hover {
+      color: #f9fafb;
+    }
+
+    nav li a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      border: 1px solid #d0d7e2;
+      color: #111827;
+    }
+
+    .btn-outline:hover {
+      background: #f3f4ff;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.15);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #16a7b8, #2563eb);
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.6);
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .nav-toggle span {
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: #111827;
+    }
+
+    .profile-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4b5563;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #ffffff;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.1);
+    }
+
+    .profile-menu {
+      position: absolute;
+      right: 0;
+      top: 110%;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
+      border: 1px solid #e5e7eb;
+      padding: 0.5rem 0;
+      min-width: 180px;
+      display: none;
+      z-index: 1500;
+    }
+
+    .profile-wrapper {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .theme-toggle {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: #111827;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+    }
+
+    .profile-menu button {
+      width: 100%;
+      padding: 0.5rem 0.9rem;
+      border: none;
+      background: transparent;
+      text-align: left;
+      font-size: 0.85rem;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .profile-menu button:hover {
+      background: #f3f4f6;
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      left: 1rem;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+      border: 1px solid #e5e7eb;
+      padding: 0.9rem 1rem;
+      margin-top: 0.6rem;
+      width: 260px;
+      display: none;
+      z-index: 1400;
+      max-height: calc(100vh - 90px);
+      overflow-y: auto;
+    }
+
+    .nav-menu-section-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 0.35rem;
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      color: #111827;
+    }
+
+    .nav-menu a:hover {
+      color: #2563eb;
+    }
+
+    .nav-menu-divider {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 0.55rem 0 0.5rem 0;
+    }
+
+    .nav-menu-doctor {
+      font-size: 0.82rem;
+      padding: 0.35rem 0;
+      color: #374151;
+    }
+
+    .nav-menu-doctor span {
+      display: block;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .nav-menu {
+        right: 0.5rem;
+        left: 0.5rem;
+        width: auto;
+      }
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Appointment page */
+    .appointment-wrapper {
+      padding: 2.5rem 0 2.5rem 0;
+      background: radial-gradient(circle at top, #e0f2fe 0, #eff6ff 40%, #f9fafb 100%);
+    }
+
+    .appointment-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .appointment-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: #0b1120;
+    }
+
+    .appointment-subtitle {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 0.9rem;
+    }
+
+    .appointment-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1rem;
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 700px) {
+      .appointment-form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      color: #374151;
+      margin-bottom: 0.2rem;
+      display: block;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.55rem 0.6rem;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background: #f9fafb;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.15);
+      background: #ffffff;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .form-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .link-inline {
+      font-size: 0.85rem;
+      color: #2563eb;
+    }
+
+    /* Doctors page */
+    .doctors-wrapper {
+      padding: 2.5rem 0 2.5rem 0;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    .doctors-header-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+
+    .doctors-header-subtitle {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .doctor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    @media (max-width: 960px) {
+      .doctor-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .doctor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .doctor-card {
+      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.18), rgba(15, 23, 42, 0.9));
+      border-radius: 18px;
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+    }
+
+    .doctor-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .doctor-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .doctor-name {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .doctor-speciality {
+      font-size: 0.85rem;
+      color: #bfdbfe;
+    }
+
+    .doctor-meta {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      margin-bottom: 0.6rem;
+    }
+
+    .doctor-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .doctor-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #d1d5db;
+    }
+
+    .btn-link {
+      color: #bfdbfe;
+    }
+
+    .btn-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Dark theme overrides */
+    body.dark-theme {
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    body.dark-theme header {
+      background: rgba(15, 23, 42, 0.98);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    body.dark-theme .logo-text-main {
+      color: #e5edf9;
+    }
+
+    body.dark-theme .logo-text-sub {
+      color: #9ca3af;
+    }
+
+    body.dark-theme .profile-icon,
+    body.dark-theme .theme-toggle {
+      background: #020617;
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.9);
+    }
+
+    body.dark-theme .hero {
+      background: radial-gradient(circle at top left, #020617 0, #0f172a 40%, #020617 100%);
+    }
+
+    body.dark-theme .section {
+      background: #020617;
+    }
+
+    body.dark-theme .service-card {
+      background: #020617;
+      border-color: rgba(148, 163, 184, 0.4);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.8);
+    }
+
+    body.dark-theme footer {
+      background: #020617;
+      border-color: #111827;
+      color: #9ca3af;
+    }
+
+    /* --------------------
+       HERO / BANNER
+    -------------------- */
+    .hero {
+      padding: 3.5rem 0 3rem 0;
+      background: radial-gradient(circle at top left, #e0f2fe 0, #eff6ff 36%, #ffffff 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      color: #166534;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3);
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      line-height: 1.2;
+      color: #0b1120;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: #4b5563;
+      max-width: 500px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .hero-meta-item span {
+      display: block;
+      font-weight: 700;
+      color: #111827;
+      font-size: 1.05rem;
+    }
+
+    /* Hero right card */
+    .hero-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.6rem 1.5rem;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.14), transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #111827;
+    }
+
+    .hero-card-badge {
+      font-size: 0.7rem;
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      background: rgba(22, 163, 74, 0.08);
+      color: #15803d;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .hero-card-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-stat {
+      padding: 0.6rem 0.7rem;
+      border-radius: 16px;
+      background: #f9fafb;
+    }
+
+    .hero-stat-label {
+      color: #6b7280;
+      margin-bottom: 0.1rem;
+      font-size: 0.75rem;
+    }
+
+    .hero-stat-value {
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .hero-appointment {
+      margin-top: 0.5rem;
+      padding: 0.85rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(37, 99, 235, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+    }
+
+    .hero-appointment-left strong {
+      color: #111827;
+    }
+
+    .hero-appointment-right {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: #2563eb;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .hero-avatars {
+      display: flex;
+      align-items: center;
+      margin-top: 0.8rem;
+    }
+
+    .hero-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.75rem;
+      border: 2px solid #ffffff;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.2);
+    }
+
+    .hero-avatar + .hero-avatar {
+      margin-left: -10px;
+    }
+
+    .hero-avatar-more {
+      background: #e5e7eb;
+      color: #4b5563;
+    }
+
+    .hero-avatars-text {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-left: 0.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* --------------------
+       SERVICES SECTION
+    -------------------- */
+    .section {
+      padding: 2.5rem 0 2rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+      max-width: 420px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+      border: 1px solid #e5e7eb;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(37, 99, 235, 0.35);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.18);
+    }
+
+    .service-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.7rem;
+      font-size: 1.1rem;
+    }
+
+    .service-icon.blue {
+      background: rgba(37, 99, 235, 0.1);
+      color: #2563eb;
+    }
+
+    .service-icon.green {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+    }
+
+    .service-icon.orange {
+      background: rgba(249, 115, 22, 0.1);
+      color: #ea580c;
+    }
+
+    .service-icon.purple {
+      background: rgba(129, 140, 248, 0.12);
+      color: #4f46e5;
+    }
+
+    .service-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #111827;
+      margin-bottom: 0.3rem;
+    }
+
+    .service-text {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-link {
+      font-size: 0.78rem;
+      color: #2563eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-weight: 600;
+    }
+
+    /* --------------------
+       FOOTER
+    -------------------- */
+    footer {
+      padding: 1.5rem 0 1.2rem 0;
+      border-top: 1px solid #e5e7eb;
+      background: #ffffff;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .footer-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-links a:hover {
+      color: #111827;
+    }
+
+    /* --------------------
+       DOCTOR SEARCH BAR
+    -------------------- */
+    .doctor-search-container {
+      position: relative;
+      margin-top: 0.5rem;
+    }
+
+    .doctor-search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #ffffff;
+    }
+
+    .doctor-search-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+      border: 1px solid #e5e7eb;
+      margin-top: 0.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 100;
+      display: none;
+    }
+
+    .search-suggestions.show {
+      display: block;
+    }
+
+    .search-suggestion-item {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f3f4f6;
+      transition: background 0.2s ease;
+    }
+
+    .search-suggestion-item:last-child {
+      border-bottom: none;
+    }
+
+    .search-suggestion-item:hover {
+      background: #f9fafb;
+    }
+
+    .search-suggestion-item strong {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .search-suggestion-item span {
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+
+    /* --------------------
+       LOGIN MODAL
+    -------------------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 25px 50px rgba(15, 23, 42, 0.3);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #6b7280;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: #f3f4f6;
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+
+    .modal-subtitle {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .modal-form input {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .modal-form input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .modal-form-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .modal-form-actions button {
+      flex: 1;
+    }
+
+    .error-message {
+      color: #dc2626;
+      font-size: 0.85rem;
+      margin-top: -0.5rem;
+    }
+
+    /* --------------------
+       CONTACT / MAP SECTION
+    -------------------- */
+    .contact-wrapper {
+      padding: 2.5rem 0;
+      background: #f9fafb;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-info-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    .contact-info-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-info-label {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-info-value {
+      font-size: 1rem;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .map-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      height: 400px;
+      background: #e5e7eb;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* --------------------
+       MEDICINE INVENTORY
+    -------------------- */
+    .inventory-wrapper {
+      padding: 2.5rem 0;
+      background: #ffffff;
+    }
+
+    .inventory-table-container {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+
+    .inventory-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+    }
+
+    .inventory-table thead {
+      background: #f9fafb;
+    }
+
+    .inventory-table th {
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+
+    .inventory-table th:hover {
+      background: #f3f4f6;
+    }
+
+    .inventory-table th.sortable::after {
+      content: " ↕";
+      opacity: 0.4;
+      font-size: 0.8rem;
+    }
+
+    .inventory-table th.sort-asc::after {
+      content: " ↑";
+      opacity: 1;
+      color: #2563eb;
+    }
+
+    .inventory-table th.sort-desc::after {
+      content: " ↓";
+      opacity: 1;
+      color: #2563eb;
+    }
+
+    .inventory-table td {
+      padding: 0.9rem 1rem;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .inventory-table tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .stock-badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .stock-badge.high {
+      background: rgba(34, 197, 94, 0.1);
+      color: #15803d;
+    }
+
+    .stock-badge.medium {
+      background: rgba(249, 115, 22, 0.1);
+      color: #ea580c;
+    }
+
+    .stock-badge.low {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+    }
+
+    /* --------------------
+       FEEDBACK FORM
+    -------------------- */
+    .feedback-wrapper {
+      padding: 2.5rem 0;
+      background: radial-gradient(circle at top, #e0f2fe 0, #eff6ff 40%, #f9fafb 100%);
+    }
+
+    .feedback-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      justify-content: center;
+    }
+
+    .star {
+      font-size: 2rem;
+      color: #d1d5db;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .star:hover {
+      transform: scale(1.1);
+    }
+
+    .star.active {
+      color: #fbbf24;
+    }
+
+    .star-rating-label {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <div class="navbar" id="navbar">
+        <!-- Hamburger on top-left -->
+        <div class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Logo centered -->
+        <div class="logo">
+          <div class="logo-icon">R</div>
+          <div>
+            <div class="logo-text-main">RAMACHANDRAN HOSPITAL</div>
+            <div class="logo-text-sub">Compassion. Quality. Trust.</div>
+          </div>
+        </div>
+
+        <!-- Right side: profile + theme toggle -->
+        <div class="profile-wrapper">
+          <div class="profile-icon" id="profileIcon" title="Profile">
+            👤
+          </div>
+          <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+            🌙
+          </button>
+          <div class="profile-menu" id="profileMenu">
+            <button id="loginBtn">Login</button>
+            <button id="signupBtn">Sign Up</button>
+          </div>
+        </div>
+      </div>
+      <div class="nav-menu" id="navMenu">
+        <div>
+          <div class="nav-menu-section-title">Navigate</div>
+          <a href="#home">Home</a>
+          <a href="#services">Departments</a>
+          <a href="#doctors">Doctors</a>
+          <a href="#inventory">Medicine Inventory</a>
+          <a href="#contact">Contact Us</a>
+          <a href="#appointment">Make an Appointment</a>
+          <a href="#feedback">Patient Feedback</a>
+        </div>
+        <hr class="nav-menu-divider" />
+        <div>
+          <div class="nav-menu-section-title">Our Specialists</div>
+          <a class="nav-menu-doctor" href="#doctors" data-doctor="dr-mehta">
+            <span>Dr. Arjun Mehta</span>
+            Senior Cardiologist · 10+ years experience
+          </a>
+          <a class="nav-menu-doctor" href="#doctors" data-doctor="dr-rao">
+            <span>Dr. Sneha Rao</span>
+            Consultant Neurologist · 8+ years experience
+          </a>
+          <a class="nav-menu-doctor" href="#doctors" data-doctor="dr-khan">
+            <span>Dr. Imran Khan</span>
+            Orthopedic Surgeon · 12+ years experience
+          </a>
+          <a class="nav-menu-doctor" href="#doctors" data-doctor="dr-iyer">
+            <span>Dr. Kavya Iyer</span>
+            Pediatrician · 7+ years experience
+          </a>
+          <a class="nav-menu-doctor" href="#doctors" data-doctor="dr-singh">
+            <span>Dr. Rohan Singh</span>
+            General Physician · 9+ years experience
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+  <!-- HOME / HERO -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Left content -->
+        <div>
+          <div class="hero-badge">
+            <div class="hero-badge-dot"></div>
+            24/7 Emergency & Critical Care
+          </div>
+          <h1 class="hero-title">
+            World‑class care, right <span>where you are.</span>
+          </h1>
+          <p class="hero-subtitle">
+            RAMACHANDRAN HOSPITAL brings together advanced technology, experienced specialists,
+            and a warm, human touch to keep you and your family healthy and safe.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#appointment" class="btn btn-primary">
+              Schedule Appointment
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span>150+</span>
+              Specialist Doctors
+            </div>
+            <div class="hero-meta-item">
+              <span>25+</span>
+              Medical Departments
+            </div>
+            <div class="hero-meta-item">
+              <span>1M+</span>
+              Patients Treated
+            </div>
+          </div>
+        </div>
+
+        <!-- Right card -->
+        <div>
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">Today at RAMACHANDRAN</div>
+                <small style="font-size: 0.75rem; color:#6b7280;">Quick overview at a glance</small>
+              </div>
+              <div class="hero-card-badge">
+                <div class="hero-card-badge-dot"></div>
+                Live Status
+              </div>
+            </div>
+
+            <div class="hero-stat-grid">
+              <div class="hero-stat">
+                <div class="hero-stat-label">Waiting Time (OPD)</div>
+                <div class="hero-stat-value">15–20 min</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">Emergency Beds</div>
+                <div class="hero-stat-value">6 / 10 free</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">ICU Occupancy</div>
+                <div class="hero-stat-value">82%</div>
+              </div>
+            </div>
+
+            <div class="hero-appointment">
+              <div class="hero-appointment-left">
+                <strong>Search for a Doctor</strong>
+                <div>Find specialists by name or specialization</div>
+              </div>
+            </div>
+            <div class="doctor-search-container">
+              <input type="text" class="doctor-search-input" id="doctorSearch" placeholder="Type doctor name or specialization (e.g., Cardiology, Dr. Mehta)..." />
+              <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+
+            <div class="hero-avatars">
+              <div class="hero-avatar">DR</div>
+              <div class="hero-avatar">AR</div>
+              <div class="hero-avatar">SK</div>
+              <div class="hero-avatar hero-avatar-more">+9</div>
+              <div class="hero-avatars-text">
+                Trusted by thousands of patients every week.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- hero-grid -->
+    </div>
+  </section>
+
+  <!-- SERVICES / DEPARTMENTS -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Our Key Departments</h2>
+        </div>
+        <p class="section-subtitle">
+          From preventive care and diagnostics to complex surgeries, our multidisciplinary team
+          ensures complete care for you and your loved ones.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon blue">❤</div>
+          <div class="service-title">Cardiology</div>
+          <div class="service-text">
+            Comprehensive heart care with advanced imaging, interventional procedures, and post‑operative rehab.
+          </div>
+          <div class="service-link">
+            Explore cardiology
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon green">👨‍⚕️</div>
+          <div class="service-title">General Medicine</div>
+          <div class="service-text">
+            Primary & preventive care, chronic disease management, and routine health check‑ups for all ages.
+          </div>
+          <div class="service-link">
+            View services
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon orange">🧠</div>
+          <div class="service-title">Neurology</div>
+          <div class="service-text">
+            Expert diagnosis and treatment for stroke, epilepsy, migraine, and complex neurological conditions.
+          </div>
+          <div class="service-link">
+            Meet specialists
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon purple">👶</div>
+          <div class="service-title">Mother & Child Care</div>
+          <div class="service-text">
+            Safe maternity, neonatal ICU, pediatric care, and family‑centered birthing experience.
+          </div>
+          <div class="service-link">
+            Learn more
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPOINTMENT SECTION -->
+  <section id="appointment">
+    <div class="appointment-wrapper">
+      <div class="container">
+        <div class="appointment-card">
+          <h2 class="appointment-title">Book an Appointment</h2>
+          <p class="appointment-subtitle">
+            Choose your preferred doctor, date, and time. Our team will confirm your visit via SMS and email.
+          </p>
+          <form class="appointment-form" id="appointmentForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" required placeholder="Enter your full name" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Mobile Number</label>
+              <input type="tel" id="phone" required placeholder="+91 98765 43210" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="doctor">Preferred Doctor</label>
+              <select id="doctor" required>
+                <option value="">Select a specialist</option>
+                <option value="dr-mehta">Dr. Arjun Mehta · Cardiology</option>
+                <option value="dr-rao">Dr. Sneha Rao · Neurology</option>
+                <option value="dr-khan">Dr. Imran Khan · Orthopedics</option>
+                <option value="dr-iyer">Dr. Kavya Iyer · Pediatrics</option>
+                <option value="dr-singh">Dr. Rohan Singh · General Medicine</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="date">Appointment Date</label>
+              <input type="date" id="date" required />
+            </div>
+            <div class="form-group">
+              <label for="time">Preferred Time</label>
+              <input type="time" id="time" required />
+            </div>
+
+            <div class="form-group form-full">
+              <label for="notes">Reason / Symptoms (optional)</label>
+              <textarea id="notes" rows="3" placeholder="Briefly describe your concern"></textarea>
+            </div>
+
+            <div class="form-actions">
+              <a href="#home" class="link-inline">← Back to Home</a>
+              <button type="submit" class="btn btn-primary">Confirm Appointment</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS SECTION -->
+  <section id="doctors">
+    <div class="doctors-wrapper">
+      <div class="container">
+        <h2 class="doctors-header-title">Our Specialist Doctors</h2>
+        <p class="doctors-header-subtitle">
+          Meet a few of the senior consultants who lead critical care at RAMACHANDRAN HOSPITAL.
+          You can select any of these doctors while booking an appointment.
+        </p>
+        <div class="doctor-grid">
+          <article class="doctor-card" id="dr-mehta">
+            <div class="doctor-header">
+              <div class="doctor-avatar">AM</div>
+              <div>
+                <div class="doctor-name">Dr. Arjun Mehta</div>
+                <div class="doctor-speciality">Senior Consultant · Interventional Cardiology</div>
+              </div>
+            </div>
+            <div class="doctor-meta">
+              10+ years experience · MBBS, MD (Internal Medicine), DM (Cardiology)
+            </div>
+            <div class="doctor-tags">
+              <span class="tag">Heart Failure</span>
+              <span class="tag">Angioplasty</span>
+              <span class="tag">Cardiac Imaging</span>
+            </div>
+            <div class="doctor-footer">
+              <span>Mon – Sat · 9:00 AM – 1:00 PM</span>
+              <a href="#appointment" class="btn-link" data-doctor="dr-mehta">Book with Dr. Mehta →</a>
+            </div>
+          </article>
+
+          <article class="doctor-card" id="dr-rao">
+            <div class="doctor-header">
+              <div class="doctor-avatar">SR</div>
+              <div>
+                <div class="doctor-name">Dr. Sneha Rao</div>
+                <div class="doctor-speciality">Consultant Neurologist</div>
+              </div>
+            </div>
+            <div class="doctor-meta">
+              8+ years experience · MBBS, MD, DM (Neurology)
+            </div>
+            <div class="doctor-tags">
+              <span class="tag">Epilepsy</span>
+              <span class="tag">Stroke</span>
+              <span class="tag">Headache Clinic</span>
+            </div>
+            <div class="doctor-footer">
+              <span>Mon – Sat · 2:00 PM – 6:00 PM</span>
+              <a href="#appointment" class="btn-link" data-doctor="dr-rao">Book with Dr. Rao →</a>
+            </div>
+          </article>
+
+          <article class="doctor-card" id="dr-khan">
+            <div class="doctor-header">
+              <div class="doctor-avatar">IK</div>
+              <div>
+                <div class="doctor-name">Dr. Imran Khan</div>
+                <div class="doctor-speciality">Consultant Orthopedic Surgeon</div>
+              </div>
+            </div>
+            <div class="doctor-meta">
+              12+ years experience · MBBS, MS (Orthopedics)
+            </div>
+            <div class="doctor-tags">
+              <span class="tag">Joint Replacement</span>
+              <span class="tag">Sports Injuries</span>
+              <span class="tag">Trauma</span>
+            </div>
+            <div class="doctor-footer">
+              <span>Mon – Sat · 11:00 AM – 3:00 PM</span>
+              <a href="#appointment" class="btn-link" data-doctor="dr-khan">Book with Dr. Khan →</a>
+            </div>
+          </article>
+
+          <article class="doctor-card" id="dr-iyer">
+            <div class="doctor-header">
+              <div class="doctor-avatar">KI</div>
+              <div>
+                <div class="doctor-name">Dr. Kavya Iyer</div>
+                <div class="doctor-speciality">Consultant Pediatrician</div>
+              </div>
+            </div>
+            <div class="doctor-meta">
+              7+ years experience · MBBS, MD (Pediatrics)
+            </div>
+            <div class="doctor-tags">
+              <span class="tag">Child Nutrition</span>
+              <span class="tag">Vaccination</span>
+              <span class="tag">Newborn Care</span>
+            </div>
+            <div class="doctor-footer">
+              <span>Mon – Sat · 10:00 AM – 2:00 PM</span>
+              <a href="#appointment" class="btn-link" data-doctor="dr-iyer">Book with Dr. Iyer →</a>
+            </div>
+          </article>
+
+          <article class="doctor-card" id="dr-singh">
+            <div class="doctor-header">
+              <div class="doctor-avatar">RS</div>
+              <div>
+                <div class="doctor-name">Dr. Rohan Singh</div>
+                <div class="doctor-speciality">Senior Consultant · General Medicine</div>
+              </div>
+            </div>
+            <div class="doctor-meta">
+              9+ years experience · MBBS, MD (General Medicine)
+            </div>
+            <div class="doctor-tags">
+              <span class="tag">Diabetes Care</span>
+              <span class="tag">Hypertension</span>
+              <span class="tag">Preventive Health</span>
+            </div>
+            <div class="doctor-footer">
+              <span>Mon – Sat · 5:00 PM – 8:00 PM</span>
+              <a href="#appointment" class="btn-link" data-doctor="dr-singh">Book with Dr. Singh →</a>
+            </div>
+          </article>
+        </div>
+        <div style="text-align:center; margin-top:1.2rem;">
+          <a href="#home" class="link-inline">← Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDICINE INVENTORY SECTION -->
+  <section id="inventory" class="inventory-wrapper">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Medicine Inventory</h2>
+        </div>
+        <p class="section-subtitle">
+          View and manage hospital medicine stock. Click column headers to sort.
+        </p>
+      </div>
+      <div class="inventory-table-container">
+        <table class="inventory-table" id="inventoryTable">
+          <thead>
+            <tr>
+              <th class="sortable" data-sort="name">Medicine Name</th>
+              <th class="sortable" data-sort="category">Category</th>
+              <th class="sortable" data-sort="stock">Stock Quantity</th>
+              <th class="sortable" data-sort="price">Price (₹)</th>
+              <th class="sortable" data-sort="expiry">Expiry Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryTableBody">
+            <!-- Populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT US SECTION -->
+  <section id="contact" class="contact-wrapper">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Contact Us</h2>
+        </div>
+        <p class="section-subtitle">
+          Visit us or get in touch. We're here to help you 24/7.
+        </p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <div class="contact-info-item">
+            <div class="contact-info-label">Address</div>
+            <div class="contact-info-value">123 Medical Street, Health City<br />Chennai, Tamil Nadu 600001</div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-value">+91 98765 43210<br />+91 11 2345 6789</div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value">info@ramachandranhospital.com<br />emergency@ramachandranhospital.com</div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-label">Emergency</div>
+            <div class="contact-info-value">24/7 Emergency Services<br />Ambulance: 108</div>
+          </div>
+        </div>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d80.2707!3d13.0827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA0JzU3LjciTiA4MMKwMTYnMTQuNyJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATIENT FEEDBACK SECTION -->
+  <section id="feedback" class="feedback-wrapper">
+    <div class="container">
+      <div class="feedback-card">
+        <h2 class="appointment-title">Patient Feedback</h2>
+        <p class="appointment-subtitle">
+          Share your experience with us. Your feedback helps us improve our services.
+        </p>
+        <form class="appointment-form" id="feedbackForm">
+          <div class="form-group form-full">
+            <label>Overall Rating</label>
+            <div class="star-rating" id="starRating">
+              <span class="star" data-rating="1">★</span>
+              <span class="star" data-rating="2">★</span>
+              <span class="star" data-rating="3">★</span>
+              <span class="star" data-rating="4">★</span>
+              <span class="star" data-rating="5">★</span>
+            </div>
+            <div class="star-rating-label" id="ratingLabel">Click to rate</div>
+          </div>
+
+          <div class="form-group">
+            <label for="feedbackName">Your Name</label>
+            <input type="text" id="feedbackName" required placeholder="Enter your name" />
+          </div>
+          <div class="form-group">
+            <label for="feedbackEmail">Email</label>
+            <input type="email" id="feedbackEmail" required placeholder="you@example.com" />
+          </div>
+
+          <div class="form-group form-full">
+            <label for="feedbackDoctor">Doctor (Optional)</label>
+            <select id="feedbackDoctor">
+              <option value="">Select a doctor (optional)</option>
+              <option value="dr-mehta">Dr. Arjun Mehta</option>
+              <option value="dr-rao">Dr. Sneha Rao</option>
+              <option value="dr-khan">Dr. Imran Khan</option>
+              <option value="dr-iyer">Dr. Kavya Iyer</option>
+              <option value="dr-singh">Dr. Rohan Singh</option>
+            </select>
+          </div>
+
+          <div class="form-group form-full">
+            <label for="feedbackMessage">Your Feedback</label>
+            <textarea id="feedbackMessage" rows="4" required placeholder="Share your experience, suggestions, or concerns..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <a href="#home" class="link-inline">← Back to Home</a>
+            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h2 class="modal-title">Login Required</h2>
+      <p class="modal-subtitle">Please login to book an appointment</p>
+      <form class="modal-form" id="staffLoginForm">
+        <div>
+          <input type="text" id="staffUsername" placeholder="Username" required />
+          <div class="error-message" id="usernameError"></div>
+        </div>
+        <div>
+          <input type="password" id="staffPassword" placeholder="Password" required />
+          <div class="error-message" id="passwordError"></div>
+        </div>
+        <div class="modal-form-actions">
+          <button type="button" class="btn btn-outline" id="gotoSignup">Sign Up</button>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SIMPLE FOOTER -->
+  <footer id="contact">
+    <div class="container footer-grid" style="justify-content: center; text-align: center;">
+      <div>
+        © RAMACHANDRAN HOSPITAL | Built by S HARI SHANKAR
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile / desktop nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+    const navbar = document.getElementById("navbar");
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navMenu.style.display === "block";
+      navMenu.style.display = isOpen ? "none" : "block";
+    });
+
+    // Handle nav menu links (scroll to sections, set doctor if needed)
+    navMenu.addEventListener("click", (e) => {
+      const target = e.target.closest("a");
+      if (!target) return;
+      const doctorId = target.dataset.doctor;
+      const href = target.getAttribute("href");
+
+      // Always close menu after clicking an item
+      navMenu.style.display = "none";
+
+      if (doctorId) {
+        e.preventDefault();
+        if (href === "#appointment") {
+          const select = document.getElementById("doctor");
+          if (select) select.value = doctorId;
+          const section = document.getElementById("appointment");
+          if (section) section.scrollIntoView({ behavior: "smooth" });
+        } else if (href === "#doctors") {
+          const card = document.getElementById(doctorId);
+          if (card) {
+            card.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }
+      // For non-doctor links, default browser anchor scrolling will work
+    });
+
+    // Close nav menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!navbar.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.style.display = "none";
+      }
+    });
+
+    // Appointment form handling (will be updated after login modal setup)
+    const appointmentForm = document.getElementById("appointmentForm");
+
+    // Profile / login logic (front-end only)
+    const profileIcon = document.getElementById("profileIcon");
+    const profileMenu = document.getElementById("profileMenu");
+    const loginBtn = document.getElementById("loginBtn");
+    const signupBtn = document.getElementById("signupBtn");
+    const themeToggle = document.getElementById("themeToggle");
+
+    function updateProfileUI() {
+      const storedUser = localStorage.getItem("ccUser");
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        profileIcon.textContent = user.name ? user.name.charAt(0).toUpperCase() : "👤";
+        profileMenu.innerHTML = "";
+        const logoutButton = document.createElement("button");
+        logoutButton.textContent = "Logout";
+        logoutButton.addEventListener("click", () => {
+          localStorage.removeItem("ccUser");
+          profileMenu.style.display = "none";
+          profileIcon.textContent = "👤";
+          // Rebuild default menu
+          profileMenu.innerHTML = "";
+          const loginB = document.createElement("button");
+          loginB.id = "loginBtn";
+          loginB.textContent = "Login";
+          loginB.addEventListener("click", handleLogin);
+          const signupB = document.createElement("button");
+          signupB.id = "signupBtn";
+          signupB.textContent = "Sign Up";
+          signupB.addEventListener("click", handleSignup);
+          profileMenu.appendChild(loginB);
+          profileMenu.appendChild(signupB);
+        });
+        profileMenu.appendChild(logoutButton);
+      }
+    }
+
+    function handleLogin() {
+      const name = window.prompt("Enter your full name to login:");
+      if (name && name.trim().length > 0) {
+        const user = { name: name.trim() };
+        localStorage.setItem("ccUser", JSON.stringify(user));
+        updateProfileUI();
+        profileMenu.style.display = "none";
+        alert("Welcome, " + user.name + "!");
+      }
+    }
+
+    function handleSignup() {
+      const name = window.prompt("Enter your full name to sign up:");
+      if (name && name.trim().length > 0) {
+        const user = { name: name.trim() };
+        localStorage.setItem("ccUser", JSON.stringify(user));
+        updateProfileUI();
+        profileMenu.style.display = "none";
+        alert("Account created. Welcome, " + user.name + "!");
+      }
+    }
+
+    // Initial attach of login/signup
+    loginBtn.addEventListener("click", handleLogin);
+    signupBtn.addEventListener("click", handleSignup);
+
+    profileIcon.addEventListener("click", (e) => {
+      e.stopPropagation();
+      profileMenu.style.display =
+        profileMenu.style.display === "block" ? "none" : "block";
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!profileMenu.contains(e.target) && e.target !== profileIcon) {
+        profileMenu.style.display = "none";
+      }
+    });
+
+    // On load, update profile view if user already "logged in"
+    updateProfileUI();
+
+    // Theme toggle logic
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        document.body.classList.add("dark-theme");
+        if (themeToggle) themeToggle.textContent = "☀️";
+      } else {
+        document.body.classList.remove("dark-theme");
+        if (themeToggle) themeToggle.textContent = "🌙";
+      }
+    }
+
+    const storedTheme = localStorage.getItem("ccTheme") || "light";
+    applyTheme(storedTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const current = document.body.classList.contains("dark-theme") ? "dark" : "light";
+        const next = current === "dark" ? "light" : "dark";
+        localStorage.setItem("ccTheme", next);
+        applyTheme(next);
+      });
+    }
+
+    // ==================== DOCTOR SEARCH WITH AUTOCOMPLETE ====================
+    const doctorsData = [
+      { id: "dr-mehta", name: "Dr. Arjun Mehta", specialization: "Cardiology", tags: ["Heart Failure", "Angioplasty", "Cardiac Imaging"] },
+      { id: "dr-rao", name: "Dr. Sneha Rao", specialization: "Neurology", tags: ["Epilepsy", "Stroke", "Headache"] },
+      { id: "dr-khan", name: "Dr. Imran Khan", specialization: "Orthopedics", tags: ["Joint Replacement", "Sports Injuries", "Trauma"] },
+      { id: "dr-iyer", name: "Dr. Kavya Iyer", specialization: "Pediatrics", tags: ["Child Nutrition", "Vaccination", "Newborn Care"] },
+      { id: "dr-singh", name: "Dr. Rohan Singh", specialization: "General Medicine", tags: ["Diabetes", "Hypertension", "Preventive Health"] }
+    ];
+
+    const doctorSearch = document.getElementById("doctorSearch");
+    const searchSuggestions = document.getElementById("searchSuggestions");
+
+    if (doctorSearch && searchSuggestions) {
+      doctorSearch.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        if (query.length === 0) {
+          searchSuggestions.classList.remove("show");
+          return;
+        }
+
+        const matches = doctorsData.filter(doctor => 
+          doctor.name.toLowerCase().includes(query) ||
+          doctor.specialization.toLowerCase().includes(query) ||
+          doctor.tags.some(tag => tag.toLowerCase().includes(query))
+        );
+
+        if (matches.length === 0) {
+          searchSuggestions.innerHTML = '<div class="search-suggestion-item">No doctors found</div>';
+          searchSuggestions.classList.add("show");
+          return;
+        }
+
+        searchSuggestions.innerHTML = matches.map(doctor => `
+          <div class="search-suggestion-item" data-doctor-id="${doctor.id}">
+            <strong>${doctor.name}</strong><br />
+            <span>${doctor.specialization} · ${doctor.tags.join(", ")}</span>
+          </div>
+        `).join("");
+
+        searchSuggestions.classList.add("show");
+
+        // Handle suggestion clicks
+        searchSuggestions.querySelectorAll(".search-suggestion-item").forEach(item => {
+          item.addEventListener("click", () => {
+            const doctorId = item.dataset.doctorId;
+            searchSuggestions.classList.remove("show");
+            doctorSearch.value = "";
+            const doctorCard = document.getElementById(doctorId);
+            if (doctorCard) {
+              document.getElementById("doctors").scrollIntoView({ behavior: "smooth" });
+              setTimeout(() => {
+                doctorCard.scrollIntoView({ behavior: "smooth", block: "center" });
+                doctorCard.style.outline = "3px solid #2563eb";
+                doctorCard.style.outlineOffset = "4px";
+                setTimeout(() => {
+                  doctorCard.style.outline = "";
+                }, 2000);
+              }, 500);
+            }
+          });
+        });
+      });
+
+      // Close suggestions when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!doctorSearch.contains(e.target) && !searchSuggestions.contains(e.target)) {
+          searchSuggestions.classList.remove("show");
+        }
+      });
+    }
+
+    // ==================== LOGIN MODAL FOR APPOINTMENTS ====================
+    const loginModal = document.getElementById("loginModal");
+    const modalClose = document.getElementById("modalClose");
+    const staffLoginForm = document.getElementById("staffLoginForm");
+    const gotoSignup = document.getElementById("gotoSignup");
+    let isLoggedIn = localStorage.getItem("staffLoggedIn") === "true";
+
+    function showLoginModal() {
+      if (loginModal) loginModal.classList.add("show");
+    }
+
+    function hideLoginModal() {
+      if (loginModal) loginModal.classList.remove("show");
+    }
+
+    if (modalClose) {
+      modalClose.addEventListener("click", hideLoginModal);
+    }
+
+    if (loginModal) {
+      loginModal.addEventListener("click", (e) => {
+        if (e.target === loginModal) hideLoginModal();
+      });
+    }
+
+    // Show login modal when trying to book appointment
+    const scheduleBtn = document.querySelector('a.btn-primary[href="#appointment"]');
+    const bookDoctorLinks = document.querySelectorAll('a[href="#appointment"][data-doctor]');
+    
+    function checkLoginBeforeAppointment(e) {
+      if (!isLoggedIn) {
+        e.preventDefault();
+        showLoginModal();
+        return false;
+      }
+      return true;
+    }
+
+    if (scheduleBtn) {
+      scheduleBtn.addEventListener("click", checkLoginBeforeAppointment);
+    }
+
+    bookDoctorLinks.forEach(link => {
+      link.addEventListener("click", checkLoginBeforeAppointment);
+    });
+
+    if (appointmentForm) {
+      appointmentForm.addEventListener("submit", (e) => {
+        if (!isLoggedIn) {
+          e.preventDefault();
+          showLoginModal();
+          return;
+        }
+        e.preventDefault();
+        alert("Your appointment request has been submitted. Our team will contact you shortly.");
+        appointmentForm.reset();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    // Staff login form handling
+    if (staffLoginForm) {
+      staffLoginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const username = document.getElementById("staffUsername").value.trim();
+        const password = document.getElementById("staffPassword").value;
+        const usernameError = document.getElementById("usernameError");
+        const passwordError = document.getElementById("passwordError");
+
+        usernameError.textContent = "";
+        passwordError.textContent = "";
+
+        // Validation
+        if (username.length < 3) {
+          usernameError.textContent = "Username must be at least 3 characters";
+          return;
+        }
+
+        if (password.length < 6) {
+          passwordError.textContent = "Password must be at least 6 characters";
+          return;
+        }
+
+        // Check if user exists (demo: check localStorage)
+        const storedUsers = JSON.parse(localStorage.getItem("staffUsers") || "[]");
+        const user = storedUsers.find(u => u.username === username);
+
+        if (!user) {
+          usernameError.textContent = "User not found. Please sign up first.";
+          return;
+        }
+
+        if (user.password !== password) {
+          passwordError.textContent = "Incorrect password";
+          return;
+        }
+
+        // Login successful
+        isLoggedIn = true;
+        localStorage.setItem("staffLoggedIn", "true");
+        localStorage.setItem("staffUsername", username);
+        hideLoginModal();
+        alert("Login successful! You can now book appointments.");
+      });
+    }
+
+    // Sign up handling
+    if (gotoSignup) {
+      gotoSignup.addEventListener("click", () => {
+        const username = prompt("Enter a username (min 3 characters):");
+        if (!username || username.length < 3) {
+          alert("Username must be at least 3 characters");
+          return;
+        }
+
+        const password = prompt("Enter a password (min 6 characters):");
+        if (!password || password.length < 6) {
+          alert("Password must be at least 6 characters");
+          return;
+        }
+
+        const storedUsers = JSON.parse(localStorage.getItem("staffUsers") || "[]");
+        if (storedUsers.find(u => u.username === username)) {
+          alert("Username already exists. Please login instead.");
+          return;
+        }
+
+        storedUsers.push({ username, password });
+        localStorage.setItem("staffUsers", JSON.stringify(storedUsers));
+        alert("Account created! Please login now.");
+        document.getElementById("staffUsername").value = username;
+      });
+    }
+
+    // ==================== MEDICINE INVENTORY TABLE ====================
+    const inventoryData = [
+      { name: "Paracetamol 500mg", category: "Pain Relief", stock: 1500, price: 25, expiry: "2025-12-31", status: "high" },
+      { name: "Amoxicillin 250mg", category: "Antibiotic", stock: 800, price: 45, expiry: "2025-08-15", status: "high" },
+      { name: "Insulin Glargine", category: "Diabetes", stock: 120, price: 450, expiry: "2025-06-20", status: "medium" },
+      { name: "Aspirin 75mg", category: "Cardiac", stock: 2000, price: 15, expiry: "2026-03-10", status: "high" },
+      { name: "Metformin 500mg", category: "Diabetes", stock: 950, price: 30, expiry: "2025-11-05", status: "high" },
+      { name: "Atorvastatin 20mg", category: "Cardiac", stock: 85, price: 120, expiry: "2025-04-18", status: "low" },
+      { name: "Omeprazole 20mg", category: "Gastro", stock: 600, price: 55, expiry: "2025-09-22", status: "medium" },
+      { name: "Salbutamol Inhaler", category: "Respiratory", stock: 45, price: 180, expiry: "2025-05-12", status: "low" },
+      { name: "Cetirizine 10mg", category: "Allergy", stock: 1100, price: 20, expiry: "2026-01-30", status: "high" },
+      { name: "Warfarin 5mg", category: "Anticoagulant", stock: 75, price: 95, expiry: "2025-07-08", status: "low" }
+    ];
+
+    let currentSort = { column: null, direction: "asc" };
+
+    function renderInventoryTable() {
+      const tbody = document.getElementById("inventoryTableBody");
+      if (!tbody) return;
+
+      const sortedData = [...inventoryData].sort((a, b) => {
+        if (!currentSort.column) return 0;
+        const aVal = a[currentSort.column];
+        const bVal = b[currentSort.column];
+        
+        if (typeof aVal === "number") {
+          return currentSort.direction === "asc" ? aVal - bVal : bVal - aVal;
+        }
+        return currentSort.direction === "asc" 
+          ? String(aVal).localeCompare(String(bVal))
+          : String(bVal).localeCompare(String(aVal));
+      });
+
+      tbody.innerHTML = sortedData.map(med => `
+        <tr>
+          <td>${med.name}</td>
+          <td>${med.category}</td>
+          <td>${med.stock}</td>
+          <td>₹${med.price}</td>
+          <td>${new Date(med.expiry).toLocaleDateString()}</td>
+          <td><span class="stock-badge ${med.status}">${med.status.toUpperCase()}</span></td>
+        </tr>
+      `).join("");
+    }
+
+    // Sort functionality
+    const sortableHeaders = document.querySelectorAll(".inventory-table th.sortable");
+    sortableHeaders.forEach(header => {
+      header.addEventListener("click", () => {
+        const column = header.dataset.sort;
+        if (currentSort.column === column) {
+          currentSort.direction = currentSort.direction === "asc" ? "desc" : "asc";
+        } else {
+          currentSort.column = column;
+          currentSort.direction = "asc";
+        }
+
+        // Update UI
+        sortableHeaders.forEach(h => {
+          h.classList.remove("sort-asc", "sort-desc");
+        });
+        header.classList.add(`sort-${currentSort.direction}`);
+
+        renderInventoryTable();
+      });
+    });
+
+    renderInventoryTable();
+
+    // ==================== FEEDBACK FORM WITH STAR RATING ====================
+    const starRating = document.getElementById("starRating");
+    const ratingLabel = document.getElementById("ratingLabel");
+    const feedbackForm = document.getElementById("feedbackForm");
+    let selectedRating = 0;
+
+    if (starRating) {
+      const stars = starRating.querySelectorAll(".star");
+      stars.forEach((star, index) => {
+        star.addEventListener("click", () => {
+          selectedRating = index + 1;
+          stars.forEach((s, i) => {
+            s.classList.toggle("active", i < selectedRating);
+          });
+          const labels = ["Poor", "Fair", "Good", "Very Good", "Excellent"];
+          ratingLabel.textContent = labels[index] || "Click to rate";
+        });
+
+        star.addEventListener("mouseenter", () => {
+          stars.forEach((s, i) => {
+            s.style.color = i <= index ? "#fbbf24" : "#d1d5db";
+          });
+        });
+      });
+
+      starRating.addEventListener("mouseleave", () => {
+        const stars = starRating.querySelectorAll(".star");
+        stars.forEach((s, i) => {
+          s.style.color = i < selectedRating ? "#fbbf24" : "#d1d5db";
+        });
+      });
+    }
+
+    if (feedbackForm) {
+      feedbackForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (selectedRating === 0) {
+          alert("Please provide a rating");
+          return;
+        }
+        alert(`Thank you for your feedback! Your ${selectedRating}-star rating has been recorded.`);
+        feedbackForm.reset();
+        selectedRating = 0;
+        starRating.querySelectorAll(".star").forEach(s => s.classList.remove("active"));
+        ratingLabel.textContent = "Click to rate";
+      });
+    }
+  </script>
+</body>
+</html>
